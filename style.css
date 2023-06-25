@@ -24,9 +24,9 @@ h1, h2, h3, h4, h5, h6, p {
   color: red;
 }
 .translation{
-  color: aquamarine;
+  color: black;
 }
 .content {
   height: 400px;
-  background-color: darkgrey;
+  background-color: whitesmoke;
 }
