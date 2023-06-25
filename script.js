@@ -21,48 +21,78 @@ recognition.maxAlternatives = 1;
 var youSpeak = document.querySelector('.you-speak');
 var newTranslation = document.querySelector('.translation');
 
+/*
 document.body.onclick = function() {
   recognition.start();
   console.log('Ready to receive a color command.');
 }
+*/
 
-recognition.onresult = function(event) {
-  // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
-  // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
-  // It has a getter so it can be accessed like an array
-  // The first [0] returns the SpeechRecognitionResult at the last position.
-  // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
-  // These also have getters so they can be accessed like arrays.
-  // The second [0] returns the SpeechRecognitionAlternative at position 0.
+document.getElementById("from-language").addEventListener("change", function() {
+    const lang11 = document.getElementById("to-language").value;
+    const lang12 = document.getElementById("from-language").value;
+    runCode(recognition, lang11, lang12);
+});
 
-    const text = event.results[0][0].transcript;
-	console.log('Bạn nói:', text);
-	youSpeak.textContent = 'Bạn nói:' + text + '.';
-	const inputText = text;
-	translateText(inputText, 'vi', 'ja')
-	.then(translatedText => {
-		console.log(translatedText);
-		newTranslation.textContent = 'Dịch sang tiếng :' + translatedText + '.';
-		const msg = new SpeechSynthesisUtterance();
-		msg.text = translatedText;
-		// msg.lang = "en-US";
-        // msg.lang = "ja-JP";
-        msg.lang = language2;
-		window.speechSynthesis.speak(msg);
-	})
-	.catch(error => console.error(error));
-}
+document.getElementById("to-language").addEventListener("change", function() {
+    const lang21 = document.getElementById("to-language").value;
+    const lang22 = document.getElementById("from-language").value;
+    runCode(recognition, lang21, lang22);
+});
 
-recognition.onspeechend = function() {
-  recognition.stop();
-}
+function runCode(Object1, lang1, lang2) {
+    Object1.lang = lang1;
+    const startButton = document.querySelector('.start');
+    startButton.addEventListener('click', () => {
+        // code xử lý sự kiện khi nhấn vào nút "Bắt đầu" ở đây
+        console.log('Đã nhấn vào nút "Bắt đầu"');
+        Object1.start();
+    });
 
-recognition.onnomatch = function(event) {
-  youSpeak.textContent = "I didn't recognise that color.";
-}
+    const endButton = document.querySelector('.end');
+    endButton.addEventListener('click', () => {
+        console.log('Đã nhấn vào nút "Kết thúc"');
+        Object1.stop();
+    });
 
-recognition.onerror = function(event) {
-  youSpeak.textContent = 'Error occurred in recognition: ' + event.error;
+    Object1.onresult = function(event) {
+        // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
+        // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
+        // It has a getter so it can be accessed like an array
+        // The first [0] returns the SpeechRecognitionResult at the last position.
+        // Each SpeechRecognitionResult object contains SpeechRecognitionAlternative objects that contain individual results.
+        // These also have getters so they can be accessed like arrays.
+        // The second [0] returns the SpeechRecognitionAlternative at position 0.
+
+        const text = event.results[0][0].transcript;
+        console.log('Bạn nói:', text);
+        youSpeak.textContent = 'Bạn nói:' + text + '.';
+        const inputText = text;
+        translateText(inputText, lang1, lang2)
+            .then(translatedText => {
+                console.log(translatedText);
+                newTranslation.textContent = 'Dịch sang tiếng :' + translatedText + '.';
+                const msg = new SpeechSynthesisUtterance();
+                msg.text = translatedText;
+                // msg.lang = "en-US";
+                // msg.lang = "ja-JP";
+                msg.lang = lang2;
+                window.speechSynthesis.speak(msg);
+            })
+            .catch(error => console.error(error));
+    }
+
+    Object1.onspeechend = function() {
+        Object1.stop();
+    }
+
+    Object1.onnomatch = function(event) {
+        youSpeak.textContent = "Tôi không nghe được tiếng nói của bạn.";
+    }
+
+    Object1.onerror = function(event) {
+        youSpeak.textContent = 'Error occurred in recognition: ' + event.error;
+    }
 }
 
 // translate text
@@ -74,3 +104,5 @@ const translateText = async (text, fromLang, toLang) => {
   const translatedText = data[0][0][0];
   return translatedText;
 };
+
+runCode(recognition, language1, language2);
