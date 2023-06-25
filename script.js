@@ -28,16 +28,16 @@ document.body.onclick = function() {
 }
 */
 
-document.getElementById("from-language").addEventListener("change", function() {
-    const lang11 = document.getElementById("to-language").value;
+document.getElementById("from-language").addEventListener("change", function(event) {
+    const lang11 = event.target.value;
     const lang12 = document.getElementById("from-language").value;
     console.log('from-language', lang11, lang12);
     runCode(recognition, lang11, lang12);
 });
 
-document.getElementById("to-language").addEventListener("change", function() {
+document.getElementById("to-language").addEventListener("change", function(event) {
     const lang21 = document.getElementById("to-language").value;
-    const lang22 = document.getElementById("from-language").value;
+    const lang22 = event.target.value;
     console.log('to-language', lang21, lang22);
     runCode(recognition, lang21, lang22);
 });
