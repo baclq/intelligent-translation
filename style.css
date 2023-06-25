@@ -1,0 +1,32 @@
+body, html {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: inherit;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.choose-language {
+  height: 100px;
+}
+.you-speak {
+  color: red;
+}
+.translation{
+  color: aquamarine;
+}
+.content {
+  height: 400px;
+  background-color: darkgrey;
+}

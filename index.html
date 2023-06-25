@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bacl Intelligent Translation</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+<body>
+<div>
+    <h1>Chọn ngôn ngữ</h1>
+    <div class="choose-language">
+        <label for="from-language">Từ tiếng</label>
+        <select id="from-language" name="fromLanguage">
+            <option value="vi-VN">ViệtNam</option>
+            <option value="en-Us">Anh</option>
+            <option value="ja-Jp">Nhật</option>
+            <option value="kr">Hàn</option>
+            <option value="zh-CN">Trung</option>
+            <option value="fr">Pháp</option>
+        </select>
+        <label for="to-language">sang tiếng</label>
+        <select id="to-language" name="toLanguage">
+            <option value="vi-VN">ViệtNam</option>
+            <option value="en-Us">Anh</option>
+            <option value="ja-Jp" selected>Nhật</option>
+            <option value="kr">Hàn</option>
+            <option value="zh-CN">Trung</option>
+            <option value="fr">Pháp</option>
+        </select>
+    </div>
+    <div class="content">
+        <h3>Nội dung trò chuyện</h3>
+        <p class="you-speak">Bạn nói ...</p>
+        <p class="translation">Kết quả dịch ...</p>
+    </div>
+</div>
+</body>
+</html>
