@@ -5,11 +5,13 @@ const selectElement1 = document.getElementById("from-language");
 const selectedValue1 = selectElement1.value;
 console.log(selectedValue1);
 var language1 = selectedValue1;
+var lang21=language1;
 
 const selectElement2 = document.getElementById("to-language");
 const selectedValue2 = selectElement2.value;
 console.log(selectedValue2);
 var language2 = selectedValue2;
+var lang12=language2;
 
 recognition.continuous = false;
 // recognition.lang = 'vi-VN';
@@ -30,13 +32,11 @@ document.body.onclick = function() {
 
 document.getElementById("from-language").addEventListener("change", function(event) {
     const lang11 = event.target.value;
-    const lang12 = document.getElementById("from-language").value;
     console.log('from-language', lang11, lang12);
     runCode(recognition, lang11, lang12);
 });
 
 document.getElementById("to-language").addEventListener("change", function(event) {
-    const lang21 = document.getElementById("to-language").value;
     const lang22 = event.target.value;
     console.log('to-language', lang21, lang22);
     runCode(recognition, lang21, lang22);
