@@ -40,21 +40,21 @@ document.getElementById("to-language").addEventListener("change", function() {
     runCode(recognition, lang21, lang22);
 });
 
+const startButton = document.querySelector('.start');
+startButton.addEventListener('click', () => {
+    // code xử lý sự kiện khi nhấn vào nút "Bắt đầu" ở đây
+    console.log('Đã nhấn vào nút "Bắt đầu"');
+    recognition.start();
+});
+
+const endButton = document.querySelector('.end');
+endButton.addEventListener('click', () => {
+    console.log('Đã nhấn vào nút "Kết thúc"');
+    recognition.stop();
+});
+
 function runCode(Object1, lang1, lang2) {
     Object1.lang = lang1;
-    const startButton = document.querySelector('.start');
-    startButton.addEventListener('click', () => {
-        // code xử lý sự kiện khi nhấn vào nút "Bắt đầu" ở đây
-        console.log('Đã nhấn vào nút "Bắt đầu"');
-        Object1.start();
-    });
-
-    const endButton = document.querySelector('.end');
-    endButton.addEventListener('click', () => {
-        console.log('Đã nhấn vào nút "Kết thúc"');
-        Object1.stop();
-    });
-
     Object1.onresult = function(event) {
         // The SpeechRecognitionEvent results property returns a SpeechRecognitionResultList object
         // The SpeechRecognitionResultList object contains SpeechRecognitionResult objects.
