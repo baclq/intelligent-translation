@@ -3,13 +3,13 @@ var recognition = new SpeechRecognition();
 
 const selectElement1 = document.getElementById("from-language");
 const selectedValue1 = selectElement1.value;
-console.log(selectedValue1);
+console.log("from-language = ", selectedValue1);
 var language1 = selectedValue1;
 var lang21=language1;
 
 const selectElement2 = document.getElementById("to-language");
 const selectedValue2 = selectElement2.value;
-console.log(selectedValue2);
+console.log("to-language = ", selectedValue2);
 var language2 = selectedValue2;
 var lang12=language2;
 
@@ -70,17 +70,20 @@ function runCode(Object1, lang1, lang2) {
 
         const text = event.results[0][0].transcript;
         console.log('Bạn nói:', text);
-        youSpeak.textContent = 'Bạn nói ' + lang1 + ' : ' + text + '.';
+        youSpeak.textContent = 'Bạn nói (' + lang1 + ') : ' + text + '.';
         const inputText = text;
         translateText(inputText, lang1, lang2)
             .then(translatedText => {
                 console.log(translatedText);
-                newTranslation.textContent = 'Dịch sang tiếng ' + lang2 + ' : ' + translatedText + '.';
+                newTranslation.textContent = 'Dịch sang tiếng (' + lang2 + ') : ' + translatedText + '.';
                 const msg = new SpeechSynthesisUtterance();
                 msg.text = translatedText;
                 // msg.lang = "en-US";
                 // msg.lang = "ja-JP";
                 msg.lang = lang2;
+				msg.pitch = 0.5; // Tốc độ phát âm
+				msg.rate = 0.7; // Tốc độ đọc
+				msg.volume = 1; // Âm lượng
                 window.speechSynthesis.speak(msg);
             })
             .catch(error => console.error(error));

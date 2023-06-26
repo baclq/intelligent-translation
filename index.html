@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bacl Intelligent Translation</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <h3 class="col-12 col-md-12">Chọn ngôn ngữ</h3>
-        <div class="col-12 col-md-12">
-        <div class="row choose-language">
-            <div class="col-4 col-md-4">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label for="from-language">Từ tiếng</label>
-                    </div>
-                    <select class="form-control" id="from-language" name="fromLanguage">
-                        <option value="vi-VN">Việt Nam</option>
-                        <option value="en-Us">Anh</option>
-                        <option value="ja-JP">Nhật</option>
-                        <option value="ko-KR">Hàn</option>
-                        <option value="zh-CN">Trung</option>
-                        <option value="fr-FR">Pháp</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-4 col-md-4">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label for="to-language">sang tiếng</label>
-                    </div>
-                    <select class="form-control" id="to-language" name="toLanguage">
-                        <option value="vi-VN">ViệtNam</option>
-                        <option value="en-Us">Anh</option>
-                        <option value="ja-JP" selected>Nhật</option>
-                        <option value="ko-KR">Hàn</option>
-                        <option value="zh-CN">Trung</option>
-                        <option value="fr-FR">Pháp</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-4 col-md-4">
-                <div class="btn-group" role="group">
-                    <button class="start btn btn-primary">Bắt đầu</button>
-                    <button class="end btn btn-info">Kết thúc</button>
-                </div>
-            </div>
-        </div>
-        </div>
+		<div class="col-xs-12 col-md-8 my-3">
+			<h3>Chọn ngôn ngữ</h3>
+			<p class="text-info">Bản quyền thuộc về Mr Bắc</p>
+		</div>
+		<div class="col-xs-12 col-md-8">
+		  <div class="d-flex">
+			<label class="form-control bg-primary text-white" for="from-language">Từ tiếng</label>
+			<select id="from-language" class="form-control mx-2" name="fromLanguage">
+				<option value="vi-VN">Việt Nam</option>
+				<option value="en-Us">Anh</option>
+				<option value="ja-JP">Nhật</option>
+				<option value="ko-KR">Hàn</option>
+				<option value="zh-CN">Trung</option>
+				<option value="fr-FR">Pháp</option>
+			</select>
+			<label class="form-control bg-warning text-white" for="to-language">sang tiếng</label>
+			<select id="to-language" name="toLanguage" class="form-control mx-2">
+				<option value="vi-VN">Việt Nam</option>
+				<option value="en-Us">Anh</option>
+				<option value="ja-JP" selected>Nhật</option>
+				<option value="ko-KR">Hàn</option>
+				<option value="zh-CN">Trung</option>
+				<option value="fr-FR">Pháp</option>
+			</select>
+		  </div>
+		</div>
+		<div class="col-xs-12 col-md-4">
+		  <div class="d-flex">
+			  <button class="start btn btn-primary mr-2">Bắt đầu</button>
+			  <button class="end btn btn-danger">Kết thúc</button>
+		  </div>
+		</div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-12 content p-2">
-            <h6>Nội dung trò chuyện</h6>
-            <p class="you-speak">Bạn nói ...</p>
-            <p class="translation">Kết quả dịch ...</p>
-        </div>
+		<div class="col-xs-12 col-md-12 my-3">
+			<p><b>Nội dung cuộc trò chuyện :</b></p>
+			<p class="you-speak text-primary">Bạn nói ... </p>
+			<p class="translation text-danger">Kết quả dịch ... </p>
+		</div>
     </div>
 </div>
 <script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
 </html>
