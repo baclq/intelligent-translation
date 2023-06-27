@@ -34,7 +34,7 @@ document.getElementById("from-language").addEventListener("change", function(eve
 document.getElementById("to-language").addEventListener("change", function(event) {
     language2 = event.target.value;
     document.querySelector('.translate-2').textContent = language2;
-    console.log('to-language', language1, language2);
+    console.log('to-language == ', language1, language2);
     // runCode(recognition, language1, language2);
 });
 

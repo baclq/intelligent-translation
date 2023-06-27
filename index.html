@@ -14,55 +14,55 @@
 <body>
 <div class="container">
     <div class="row">
-		<div class="col-xs-12 col-md-8 my-3">
-			<h3>Lựa chọn ngôn ngữ</h3>
-			<div class="text-info">Bản quyền thuộc về Mr Bắc</div>
+		<div class="col-12 col-md-8 my-3">
+			<h3>Trợ lý phiên dịch</h3>
+			<div class="text-info">Bản quyền thuộc về Mr Bắc. Cấm sao chép</div>
 		</div>
-		<div class="col-xs-12 col-md-8">
-		  <div class="d-flex">
-			<label class="form-control bg-primary text-white" for="from-language">Từ tiếng</label>
+		<div class="col-12 col-md-8">
+		  <div class="d-flex justify-content-between">
+			<label class="form-control bg-primary text-white text-truncate" for="from-language">Từ tiếng</label>
 			<select id="from-language" class="form-control mx-2" name="fromLanguage">
-				<option value="vi-VN">Việt</option>
+				<option value="vi-VN" selected>Việt</option>
 				<option value="en-Us">Anh</option>
 				<option value="ja-JP">Nhật</option>
-				<option value="ko-KR">Hàn</option>
 				<option value="zh-CN">Trung</option>
+				<option value="ko-KR">Hàn</option>
 				<option value="fr-FR">Pháp</option>
 				<option value="de-DE">Đức</option>
+				<option value="ru-RU">Nga</option>
 				<option value="th-TH">Thái</option>
 				<option value="lo-LA">Lào</option>
 				<option value="km-KH">Campuchia</option>
-				<option value="ru-RU">Nga</option>
 				<option value="hi-IN">Ấn</option>
 			</select>
-			<label class="form-control bg-info text-white" for="to-language">Sang tiếng</label>
+			<label class="form-control bg-info text-white text-truncate" for="to-language">Sang tiếng</label>
 			<select id="to-language" name="toLanguage" class="form-control mx-2">
 				<option value="vi-VN">Việt</option>
 				<option value="en-Us">Anh</option>
 				<option value="ja-JP" selected>Nhật</option>
-				<option value="ko-KR">Hàn</option>
 				<option value="zh-CN">Trung</option>
+				<option value="ko-KR">Hàn</option>
 				<option value="fr-FR">Pháp</option>
 				<option value="de-DE">Đức</option>
+				<option value="ru-RU">Nga</option>
 				<option value="th-TH">Thái</option>
 				<option value="lo-LA">Lào</option>
 				<option value="km-KH">Campuchia</option>
-				<option value="ru-RU">Nga</option>
 				<option value="hi-IN">Ấn</option>
 			</select>
 		  </div>
 		</div>
-		<div class="col-xs-12 col-md-4">
-		  <div class="d-flex">
-			  <button class="start btn btn-primary mr-1">Bắt đầu</button>
-			  <button class="end btn btn-danger mr-3">Kết thúc</button>
-			  <button class="translate-1 btn btn-info mr-1">Việt</button>
+		<div class="col-12 col-md-4">
+		  <div class="d-flex justify-content-between">
+			  <button class="start btn btn-primary">Bắt đầu</button>
+			  <button class="end btn btn-danger">Kết thúc</button>
+			  <button class="translate-1 btn btn-info">Việt</button>
 			  <button class="translate-2 btn btn-secondary">Nhật</button>
 		  </div>
 		</div>
     </div>
     <div class="row">
-		<div class="col-xs-12 col-md-12 my-3">
+		<div class="col-12 col-md-12 my-3 overflow-auto">
 			<p><b>Nội dung cuộc trò chuyện :</b></p>
 			<p class="you-speak text-primary">Bạn nói ... </p>
 			<p class="translation text-danger">Kết quả dịch ... </p>
