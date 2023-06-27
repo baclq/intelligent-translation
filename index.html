@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,35 +15,49 @@
 <div class="container">
     <div class="row">
 		<div class="col-xs-12 col-md-8 my-3">
-			<h3>Chọn ngôn ngữ</h3>
-			<p class="text-info">Bản quyền thuộc về Mr Bắc</p>
+			<h3>Chọn ngôn ngữ để nói chuyện</h3>
+			<div class="text-info">Bản quyền thuộc về Mr Bắc</div>
 		</div>
 		<div class="col-xs-12 col-md-8">
 		  <div class="d-flex">
 			<label class="form-control bg-primary text-white" for="from-language">Từ tiếng</label>
 			<select id="from-language" class="form-control mx-2" name="fromLanguage">
-				<option value="vi-VN">Việt Nam</option>
+				<option value="vi-VN">Việt</option>
 				<option value="en-Us">Anh</option>
 				<option value="ja-JP">Nhật</option>
 				<option value="ko-KR">Hàn</option>
 				<option value="zh-CN">Trung</option>
 				<option value="fr-FR">Pháp</option>
+				<option value="de-DE">Đức</option>
+				<option value="th-TH">Thái</option>
+				<option value="lo-LA">Lào</option>
+				<option value="km-KH">Campuchia</option>
+				<option value="ru-RU">Nga</option>
+				<option value="hi-IN">Ấn</option>
 			</select>
-			<label class="form-control bg-warning text-white" for="to-language">sang tiếng</label>
+			<label class="form-control bg-info text-white" for="to-language">Sang tiếng</label>
 			<select id="to-language" name="toLanguage" class="form-control mx-2">
-				<option value="vi-VN">Việt Nam</option>
+				<option value="vi-VN">Việt</option>
 				<option value="en-Us">Anh</option>
 				<option value="ja-JP" selected>Nhật</option>
 				<option value="ko-KR">Hàn</option>
 				<option value="zh-CN">Trung</option>
 				<option value="fr-FR">Pháp</option>
+				<option value="de-DE">Đức</option>
+				<option value="th-TH">Thái</option>
+				<option value="lo-LA">Lào</option>
+				<option value="km-KH">Campuchia</option>
+				<option value="ru-RU">Nga</option>
+				<option value="hi-IN">Ấn</option>
 			</select>
 		  </div>
 		</div>
 		<div class="col-xs-12 col-md-4">
 		  <div class="d-flex">
-			  <button class="start btn btn-primary mr-2">Bắt đầu</button>
-			  <button class="end btn btn-danger">Kết thúc</button>
+			  <button class="start btn btn-primary mr-1">Bắt đầu</button>
+			  <button class="end btn btn-danger mr-2">Kết thúc</button>
+			  <button class="translate-1 btn btn-info mr-1">Việt</button>
+			  <button class="translate-2 btn btn-secondary">Nhật</button>
 		  </div>
 		</div>
     </div>
@@ -52,6 +66,7 @@
 			<p><b>Nội dung cuộc trò chuyện :</b></p>
 			<p class="you-speak text-primary">Bạn nói ... </p>
 			<p class="translation text-danger">Kết quả dịch ... </p>
+			<p class="voice text-warning"></p>
 		</div>
     </div>
 </div>

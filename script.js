@@ -1,27 +1,21 @@
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var recognition = new SpeechRecognition();
 
-const selectElement1 = document.getElementById("from-language");
-const selectedValue1 = selectElement1.value;
-console.log("from-language = ", selectedValue1);
-var language1 = selectedValue1;
-var lang21=language1;
+var language1 = document.getElementById("from-language").value;
+console.log("from-language == ", language1);
 
-const selectElement2 = document.getElementById("to-language");
-const selectedValue2 = selectElement2.value;
-console.log("to-language = ", selectedValue2);
-var language2 = selectedValue2;
-var lang12=language2;
+var language2 = document.getElementById("to-language").value;
+console.log("to-language == ", language2);
 
 recognition.continuous = false;
 // recognition.lang = 'vi-VN';
 recognition.lang = language1;
-
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
 var youSpeak = document.querySelector('.you-speak');
 var newTranslation = document.querySelector('.translation');
+var newVoice = document.querySelector('.voice');
 
 /*
 document.body.onclick = function() {
@@ -31,30 +25,45 @@ document.body.onclick = function() {
 */
 
 document.getElementById("from-language").addEventListener("change", function(event) {
-    const lang11 = event.target.value;
-    lang12 = document.getElementById("to-language").value;
-    console.log('from-language', lang11, lang12);
-    runCode(recognition, lang11, lang12);
+    language1 = event.target.value;
+    document.querySelector('.translate-1').textContent = language1;
+    console.log('from-language == ', language1, language2);
+    // runCode(recognition, language1, language2);
 });
 
 document.getElementById("to-language").addEventListener("change", function(event) {
-    lang21 = document.getElementById("from-language").value;
-    const lang22 = event.target.value;
-    console.log('to-language', lang21, lang22);
-    runCode(recognition, lang21, lang22);
+    language2 = event.target.value;
+    document.querySelector('.translate-2').textContent = language2;
+    console.log('to-language', language1, language2);
+    // runCode(recognition, language1, language2);
 });
 
-const startButton = document.querySelector('.start');
-startButton.addEventListener('click', () => {
+document.querySelector('.start').addEventListener('click', () => {
     // code xử lý sự kiện khi nhấn vào nút "Bắt đầu" ở đây
     console.log('Đã nhấn vào nút "Bắt đầu"');
+    runCode(recognition, language1, language2);
     recognition.start();
 });
 
-const endButton = document.querySelector('.end');
-endButton.addEventListener('click', () => {
+document.querySelector('.end').addEventListener('click', () => {
     console.log('Đã nhấn vào nút "Kết thúc"');
     recognition.stop();
+});
+
+// Conversation
+document.querySelector('.translate-1').addEventListener('click', () => {
+    console.log('Translate 1 đã ấn');
+
+    runCode(recognition, language1, language2);
+    recognition.start();
+});
+
+// Conversation
+document.querySelector('.translate-2').addEventListener('click', () => {
+    console.log('Translate 2 đã ấn');
+
+    runCode(recognition, language2, language1);
+    recognition.start();
 });
 
 function runCode(Object1, lang1, lang2) {
@@ -72,6 +81,7 @@ function runCode(Object1, lang1, lang2) {
         console.log('Bạn nói:', text);
         youSpeak.textContent = 'Bạn nói (' + lang1 + ') : ' + text + '.';
         const inputText = text;
+
         translateText(inputText, lang1, lang2)
             .then(translatedText => {
                 console.log(translatedText);
@@ -86,7 +96,10 @@ function runCode(Object1, lang1, lang2) {
 				msg.volume = 1; // Âm lượng
                 window.speechSynthesis.speak(msg);
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                newVoice.textContent = 'Đã xảy ra lỗi khi dịch hoặc đọc';
+            });
     }
 
     Object1.onspeechend = function() {
@@ -108,8 +121,9 @@ const translateText = async (text, fromLang, toLang) => {
   const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromLang}&tl=${toLang}&dt=t&q=${encodedText}`;
   const response = await fetch(url);
   const data = await response.json();
-  const translatedText = data[0][0][0];
-  return translatedText;
+  return data[0][0][0];
+  // const translatedText = data[0][0][0];
+  // return translatedText;
 };
 
 runCode(recognition, language1, language2);
