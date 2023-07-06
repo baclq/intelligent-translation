@@ -7,6 +7,10 @@ console.log("from-language == ", language1);
 var language2 = document.getElementById("to-language").value;
 console.log("to-language == ", language2);
 
+var rate = document.getElementById("rate").value;
+console.log("rate == ", rate);
+
+
 recognition.continuous = false;
 // recognition.lang = 'vi-VN';
 recognition.lang = language1;
@@ -38,6 +42,13 @@ document.getElementById("to-language").addEventListener("change", function(event
     // runCode(recognition, language1, language2);
 });
 
+
+// change rate
+document.getElementById("rate").addEventListener("change", function(event) {
+    rate = event.target.value;
+	console.log('rate == ', rate);
+});
+
 document.querySelector('.start').addEventListener('click', () => {
     // code xử lý sự kiện khi nhấn vào nút "Bắt đầu" ở đây
     console.log('Đã nhấn vào nút "Bắt đầu"');
@@ -53,7 +64,6 @@ document.querySelector('.end').addEventListener('click', () => {
 // Conversation
 document.querySelector('.translate-1').addEventListener('click', () => {
     console.log('Translate 1 đã ấn');
-
     runCode(recognition, language1, language2);
     recognition.start();
 });
@@ -61,7 +71,6 @@ document.querySelector('.translate-1').addEventListener('click', () => {
 // Conversation
 document.querySelector('.translate-2').addEventListener('click', () => {
     console.log('Translate 2 đã ấn');
-
     runCode(recognition, language2, language1);
     recognition.start();
 });
@@ -92,7 +101,8 @@ function runCode(Object1, lang1, lang2) {
                 // msg.lang = "ja-JP";
                 msg.lang = lang2;
 				msg.pitch = 0.5; // Tốc độ phát âm
-				msg.rate = 0.7; // Tốc độ đọc
+				// msg.rate = 0.7; // Tốc độ đọc
+				msg.rate = rate; // Tốc độ đọc
 				msg.volume = 1; // Âm lượng
                 window.speechSynthesis.speak(msg);
             })
